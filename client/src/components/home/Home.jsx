@@ -1,4 +1,23 @@
+import { useEffect, useState } from "react"
+import { getAll } from "../../api/api"
+import HomeItem from "./homeItem/HomeItem"
+
 export default function Home() {
+  const [games, setGames] = useState([])
+  useEffect(() => {
+    async function fetchData() {
+      const data = await getAll()
+      // console.log(data)
+      setGames(data.reverse().slice(0,3))
+      // setGames(data)
+      // console.log(games)
+    }
+    fetchData()
+
+    // console.log(data)
+    // fetchData
+  }, [])
+  console.log(games)
   return (
     <section id="welcome-world">
       <div className="welcome-message">
@@ -9,62 +28,10 @@ export default function Home() {
       <div id="home-page">
         <h1>Latest Games</h1>
         {/* Display div: with information about every game (if any) */}
-        <div className="game">
-          <div className="image-wrap">
-            <img src="./images/CoverFire.png" />
-          </div>
-          <h3>Cover Fire</h3>
-          <div className="rating">
-            <span>☆</span>
-            <span>☆</span>
-            <span>☆</span>
-            <span>☆</span>
-            <span>☆</span>
-          </div>
-          <div className="data-buttons">
-            <a href="#" className="btn details-btn">
-              Details
-            </a>
-          </div>
-        </div>
-        <div className="game">
-          <div className="image-wrap">
-            <img src="./images/ZombieLang.png" />
-          </div>
-          <h3>Zombie Lang</h3>
-          <div className="rating">
-            <span>☆</span>
-            <span>☆</span>
-            <span>☆</span>
-            <span>☆</span>
-            <span>☆</span>
-          </div>
-          <div className="data-buttons">
-            <a href="#" className="btn details-btn">
-              Details
-            </a>
-          </div>
-        </div>
-        <div className="game">
-          <div className="image-wrap">
-            <img src="./images/MineCraft.png" />
-          </div>
-          <h3>MineCraft</h3>
-          <div className="rating">
-            <span>☆</span>
-            <span>☆</span>
-            <span>☆</span>
-            <span>☆</span>
-            <span>☆</span>
-          </div>
-          <div className="data-buttons">
-            <a href="#" className="btn details-btn">
-              Details
-            </a>
-          </div>
-        </div>
+        {games.length > 0 ? games.map(game => <HomeItem key={game._id} {...game} />) : <p className="no-articles">No games yet</p>}
+
         {/* Display paragraph: If there is no games  */}
-        <p className="no-articles">No games yet</p>
+
       </div>
     </section>
   )
