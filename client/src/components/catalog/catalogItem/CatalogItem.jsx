@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 export default function CatalogItem({ _id, title, category, imageUrl }) {
 
   console.log(_id)
@@ -10,9 +11,9 @@ export default function CatalogItem({ _id, title, category, imageUrl }) {
         <img src={imageUrl} />
         <h6>{category}</h6>
         <h2>{title}</h2>
-        <a href={_id} className="details-button">
+        <Link to={`/details/${_id}`} className="details-button">
           Details
-        </a>
+        </Link>
       </div>
     </div>
   )
