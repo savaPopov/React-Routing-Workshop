@@ -1,0 +1,18 @@
+{
+  "5cd74271-f2c1-40f0-b820-9d19b09e0fc0": {
+      "title": "Cover Fire",
+      "category": "Action",
+      "maxLevel": "4",
+      "imageUrl": "/images/avatar-1.jpg",
+      "summary": "Very fun and interesting game about shooting i recommend!",
+      "_id": "5cd74271-f2c1-40f0-b820-9d19b09e0fc0"
+  },
+  "a9ad3965-b80c-43aa-bb03-315323865fd6": {
+      "title": "World of Warcraft",
+      "category": "MMO-RPG",
+      "maxLevel": "70",
+      "imageUrl": "/images/CoverFire.png",
+      "summary": "Level up and have fun with friends!Do raids and dungeons explore the world and conquer many monsters!",
+      "_id": "a9ad3965-b80c-43aa-bb03-315323865fd6"
+  }
+}
