@@ -14,6 +14,7 @@ export default function CatalogItem({ _id, title, category, imageUrl }) {
         <Link to={`/details/${_id}`} className="details-button">
           Details
         </Link>
+
       </div>
     </div>
   )
