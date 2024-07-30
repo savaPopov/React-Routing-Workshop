@@ -7,3 +7,9 @@ export async function login(email, password) {
 
   return result
 }
+
+export async function register(email, password) {
+  const result = await api.post(`${BASE_URL}/register`, { email, password })
+  
+  return result
+}
