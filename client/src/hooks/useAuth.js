@@ -23,7 +23,7 @@ export function useRegister() {
 
   async function registerHandler(email, password) {
     const result = await register(email, password)
-    
+
     changeAuthState(result)
     console.log('authState -> ' + result)
     console.log(result)

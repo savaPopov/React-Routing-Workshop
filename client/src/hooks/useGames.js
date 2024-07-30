@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getAll, getById } from "../api/data-api"
+import { create, getAll, getById } from "../api/data-api"
 
 
 export function useGetAllGames() {
@@ -34,4 +34,13 @@ export function useGetOneGame(gameId) {
   }, [gameId])
 
   return [game, setGame]
+}
+
+export function useCreate() {
+   function gameCreateHandler(gameData) {
+     create(gameData)
+
+  }
+
+  return gameCreateHandler
 }

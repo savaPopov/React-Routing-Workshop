@@ -17,7 +17,7 @@ export default function Home() {
     // console.log(data)
     // fetchData
   }, [])
-  console.log(games)
+  // console.log(games)
   return (
     <section id="welcome-world">
       <div className="welcome-message">

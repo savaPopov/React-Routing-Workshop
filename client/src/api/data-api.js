@@ -17,3 +17,7 @@ export async function getById(gameid) {
   return result
 }
 
+
+export async function create(gameData) {
+  api.post(`http://localhost:3030/data/games`, gameData)
+}
