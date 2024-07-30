@@ -1,33 +1,26 @@
-import { useEffect, useState } from "react"
-import { getById } from "../../api/api"
+import { useState } from "react"
 import { useParams } from "react-router-dom"
+
 import { createComment } from "../../api/comments"
 
+import { useGetOneGame } from "../../hooks/useGames"
+
 export default function Details() {
-  const [game, setGame] = useState({})
+
   const { gameId } = useParams()
   const [comment, setComment] = useState('')
   const [username, setUsername] = useState('')
+  const [game, setGame] = useGetOneGame(gameId)
   // console.log(gameId)
 
-  useEffect(() => {
-    async function fetchData() {
-      const data = await getById(gameId)
-      // console.log(data)
-      setGame(data)
-      // console.log(games)
-    }
-    fetchData()
+//  console.log(game)
 
-  }, [])
   async function submitCommentHandler(e) {
     e.preventDefault()
-    console.log('Submitted form')
-    console.log(username)
-    console.log(comment)
+
     await createComment(gameId, username, comment)
   }
-  console.log(game)
+  // console.log(game)
   return (
     <section id="game-details">
       <h1>Game Details</h1>

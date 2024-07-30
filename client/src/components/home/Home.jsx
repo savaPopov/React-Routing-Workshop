@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getAll } from "../../api/api"
+import { getAll } from "../../api/data-api"
 import HomeItem from "./homeItem/HomeItem"
 
 export default function Home() {
