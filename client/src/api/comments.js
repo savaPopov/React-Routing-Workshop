@@ -1,16 +1,21 @@
 import { api } from "./requester";
-const BASE_URL = 'http://localhost:3030/jsonstore/games'
-export async function createComment(gameId, username, text) {
-
-  const result = await api.post(`${BASE_URL}/${gameId}/comments`, { username, text })
+const BASE_URL = 'http://localhost:3030/data/comments'
 
 
+
+export async function createComment(gameId, text) {
+
+  const result = await api.post(BASE_URL, { gameId, text })
+
+  return result
 }
 
-export async function getAllComments(gameId) {
-  let result = await api.get(`${BASE_URL}/${gameId}/comments`)
+export  function getAllComments(gameId) {
+  const params = new URLSearchParams({
+    where: `gameId="${gameId}"`
+  })
+  let result =  api.get(`${BASE_URL}?${params.toString()}`)
 
-  const comments = Object.values(result)
-  return comments
+  return result
 }
 
