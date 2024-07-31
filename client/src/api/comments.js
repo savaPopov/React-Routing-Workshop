@@ -12,7 +12,8 @@ export async function createComment(gameId, text) {
 
 export  function getAllComments(gameId) {
   const params = new URLSearchParams({
-    where: `gameId="${gameId}"`
+    where: `gameId="${gameId}"`,
+    load: `author=_ownerId:users`,
   })
   let result =  api.get(`${BASE_URL}?${params.toString()}`)
 

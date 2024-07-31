@@ -59,7 +59,7 @@ export default function Details() {
             {/* {console.log(comments.map(comment => comment.text))} */}
             {comments.map(comment => (
               <li key={comment._id} className="comment">
-                <p>username: {comment.text}</p>
+                <p>{comment.author.email}: {comment.text}</p>
               </li>
             ))}
             {/* list all comments for current game (If any) */}
