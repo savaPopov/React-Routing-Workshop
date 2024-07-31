@@ -7,30 +7,21 @@ import Register from "./components/register/Register"
 import Create from "./components/create/Create"
 import Catalog from "./components/catalog/Catalog"
 import Details from "./components/details/Details"
-import { AuthContext } from "./contexts/AuthContext"
+import { AuthContextProvider } from "./contexts/AuthContext"
 import { useState } from "react"
 
 
 
 function App() {
-  const [authState, setAuthState] = useState({})
 
-  const changeAuthState = (state) => {
-    localStorage.setItem('accessToken', state.accessToken)
-    setAuthState(state)
-  }
 
-  const contextData = {
-    userId: authState._id,
-    email: authState.email,
-    accessToken: authState.accessToken,
-    isAuthenticated: !!authState.email,
-    changeAuthState
-  }
+
+
+
 
   return (
     <>
-      <AuthContext.Provider value={contextData}>
+      <AuthContextProvider>
         <div id="box">
           <Header />
 
@@ -45,7 +36,7 @@ function App() {
             </Routes>
           </main>
         </div>
-      </AuthContext.Provider>
+      </AuthContextProvider>
     </>
   )
 }

@@ -28,7 +28,7 @@ export default async function requester(method, url, data) {
   const result = await response.json()
 
   if (!response.ok) {
-    console.log(result)
+    console.log(result) 
     throw result
   }
 
