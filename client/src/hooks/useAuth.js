@@ -1,4 +1,4 @@
-import { login, register } from "../api/user-api";
+import { login, register, logout } from "../api/user-api";
 import { useAuthContext } from "../contexts/AuthContext";
 
 export function useLogin() {
@@ -30,4 +30,15 @@ export function useRegister() {
   }
 
   return registerHandler
+}
+
+export function useLogout() {
+  const { logout: localLogout } = useAuthContext()
+
+  async function logoutHandler() {
+     await logout()
+     localLogout()
+  }
+
+  return logoutHandler
 }
