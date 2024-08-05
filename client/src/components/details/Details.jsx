@@ -12,7 +12,8 @@ const initialValues = {
 export default function Details() {
 
   const { gameId } = useParams()
-  const [comments, setComments] = useGetAllComments(gameId)
+  const [comments, dispatch] = useGetAllComments(gameId)
+  const { email, userId } = useAuthContext()
   const createComment = useCreateComment()
   const [game] = useGetOneGame(gameId)
   const { isAuthenticated } = useAuthContext()
@@ -26,7 +27,8 @@ export default function Details() {
       const newComment = await createComment(gameId, comment)
       // console.log('NEW COMMENT')
       // console.log(newComment)
-      setComments(oldComments => [...oldComments, newComment])
+      // setComments(oldComments => [...oldComments, newComment])
+      dispatch({ type: 'ADD_COMMENT', payload: { ...newComment, author: { email } } })
 
 
     } catch (err) {
@@ -35,6 +37,8 @@ export default function Details() {
     }
 
   })
+
+  const isOwner = userId == game._ownerId
 
   // console.log(game)
   return (
@@ -56,7 +60,7 @@ export default function Details() {
           <h2>Comments:</h2>
 
           <ul>
-            {/* {console.log(comments.map(comment => comment.text))} */}
+            {console.log(comments)}
             {comments.map(comment => (
               <li key={comment._id} className="comment">
                 <p>{comment.author.email}: {comment.text}</p>
@@ -68,6 +72,15 @@ export default function Details() {
           {/* Display paragraph: If there are no games in the database */}
           {comments.length == 0 && <p className="no-comment">No comments.</p>}
         </div>
+
+        {/* Edit/Delete buttons ( Only for creator of this game )  */}
+        {isOwner && (
+          <div className="buttons">
+          <a href="#" className="button">Edit</a>
+          <a href="#" className="button">Delete</a>
+        </div>
+      )}
+
 
       </div>
 
