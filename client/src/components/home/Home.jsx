@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react"
-import { getAll } from "../../api/data-api"
+import { getAll, getLatest } from "../../api/data-api"
 import HomeItem from "./homeItem/HomeItem"
 
 export default function Home() {
   const [games, setGames] = useState([])
   useEffect(() => {
     async function fetchData() {
-      const data = await getAll()
+      const data = await getLatest()
       // console.log(data)
-      setGames(data.reverse().slice(0,3))
-      // setGames(data)
+      
+      setGames(data)
       // console.log(games)
     }
     fetchData()

@@ -21,7 +21,13 @@ export function useGetAllGames() {
 }
 
 export function useGetOneGame(gameId) {
-  const [game, setGame] = useState({})
+  const [game, setGame] = useState({
+    title: '',
+    category: '',
+    maxLevel: '',
+    imageUrl: '',
+    summary: ''
+  })
   useEffect(() => {
     async function fetchData() {
       const data = await getById(gameId)
@@ -37,10 +43,11 @@ export function useGetOneGame(gameId) {
 }
 
 export function useCreate() {
-   function gameCreateHandler(gameData) {
-     create(gameData)
+  function gameCreateHandler(gameData) {
+    create(gameData)
 
   }
 
   return gameCreateHandler
 }
+
