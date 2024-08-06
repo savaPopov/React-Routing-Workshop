@@ -20,7 +20,7 @@ export default function Edit() {
       navigate(`/details/${gameId}`)
     }
 
-  }, { reinitializeForm: true })
+  }, true)
 
 
   console.log(game)
